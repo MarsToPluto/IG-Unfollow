@@ -199,125 +199,123 @@ async function main() {
    const unvisitedUser = await fetchVisitingUnvisitedUser(); // Await the fetch result
    const currentUser = getCurrentUserFromUrl(); // Grab the current user from the URL
    const isInitialized = await checkInitialization() || myUsername == currentUser; // Check the initialization state
-   if (isInitialized) return await fetchUnvisitedUser();
-   if (unvisitedUser && unvisitedUser.username === currentUser) {
-      // console.log('Proceeding to unfollow steps for:', unvisitedUser ? unvisitedUser.username : 'unknown user');
-      // TODO -- IMPORTANT
-      await sleep(3000); // Simulate 5 seconds of work
-      // Prepare the data to update user status
-      // Create the notification system and show messages
-      //oponing folowing list
-      //oponing folowing list
-      //oponing folowing list
-      let isOpenAble = false
-      //oponing folowing list
-      //opening following list of target 
-      //opening following list of target 
-      try {
-         document.querySelectorAll('a.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x5n08af.x9n4tj2._a6hd[role="link"]')[1].click()
-         isOpenAble = true
-      } catch (e) {
-         // statements
-         console.log(e);
-      }
-      //opening following list of target
-      //opening following list of target 
-      await sleep(5000);
-      // first ser info extracting
-      // first ser info extracting
-      let domElement = null
-      try {
-         if (isOpenAble) {
-            domElement = document.querySelector('div.xyi19xy.x1ccrb07.xtf3nb5.x1pc53ja.x1lliihq.x1iyjqo2.xs83m0k.xz65tgg.x1rife3k.x1n2onr6>div>div')
-         }
-      } catch (e) {
-         // statements
-         console.log(e);
-      }
-      const first_user = extractUserInfo(domElement)
-      console.log({
-         first_user,
-         isOpenAble
-      });
-      const updateData = {
-         follows_back: false,
-         visited: true,
-         profilePicture: null
-      };
-      if (first_user?.username == myUsername) {
-         //ser follow backs me
-         //ser follow backs me
-         updateData.follows_back = true
-         //ser follow backs me
-         //ser follow backs me
-      } else {
+   const updateData = {
+      follows_back: false,
+      visited: true,
+      profilePicture: null
+   };
+   try {
+      // statements
+      if (isInitialized) return await fetchUnvisitedUser();
+      if (unvisitedUser && unvisitedUser.username === currentUser) {
+         // console.log('Proceeding to unfollow steps for:', unvisitedUser ? unvisitedUser.username : 'unknown user');
+         // TODO -- IMPORTANT
+         await sleep(3000); // Simulate 5 seconds of work
+         // Prepare the data to update user status
+         // Create the notification system and show messages
+         //oponing folowing list
+         //oponing folowing list
+         //oponing folowing list
+         let isOpenAble = false
+         //oponing folowing list
+         //opening following list of target 
+         //opening following list of target 
          try {
-            //nfolowwwing i
-            //nfolowwwing i
-            //nfolowwwing i
-            const unfollowing_btn = document.querySelector('button._acan._acap._acat._aj1-._ap30')
-            if (unfollowing_btn) {
-               unfollowing_btn.click()
-               await sleep(3000);
-               const allDivs = document.querySelectorAll('div.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1uhb9sk.x1plvlek.xryxfnj.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1cy8zhl.x1oa3qoh.x1nhvcw1');
-               // Check if any elements were found
-               if (allDivs.length === 0) {
-                  console.error('Error: No matching div elements found.');
-               } else {
-                  // Select the last element
-                  const unfollow_btn = allDivs[allDivs.length - 1];
-                  await sleep(1000);
-                  unfollow_btn.click()
-                  await sleep(2000);
-                  console.log('Last matching div element:', lastDiv);
-               }
-            }
-            //nfolowwwing i
-            //nfolowwwing i
-            //nfolowwwing i
+            document.querySelectorAll('a.x1i10hfl.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.x5n08af.x9n4tj2._a6hd[role="link"]')[1].click()
+            isOpenAble = true
          } catch (e) {
             // statements
             console.log(e);
          }
+         //opening following list of target
+         //opening following list of target 
+         await sleep(5000);
+         // first ser info extracting
+         // first ser info extracting
+         let domElement = null
+         try {
+            if (isOpenAble) {
+               domElement = document.querySelector('div.xyi19xy.x1ccrb07.xtf3nb5.x1pc53ja.x1lliihq.x1iyjqo2.xs83m0k.xz65tgg.x1rife3k.x1n2onr6>div>div')
+            }
+         } catch (e) {
+            // statements
+            console.log(e);
+         }
+         const first_user = extractUserInfo(domElement)
+         console.log({
+            first_user,
+            isOpenAble
+         });
+         if (isOpenAble) {
+            if (first_user?.username == myUsername) {
+               //ser follow backs me
+               //ser follow backs me
+               updateData.follows_back = true
+               //ser follow backs me
+               //ser follow backs me
+            } else {
+               try {
+                  //nfolowwwing i
+                  //nfolowwwing i
+                  //nfolowwwing i
+                  const unfollowing_btn = document.querySelector('button._acan._acap._acat._aj1-._ap30')
+                  if (unfollowing_btn) {
+                     unfollowing_btn.click()
+                     await sleep(3000);
+                     const allDivs = document.querySelectorAll('div.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1uhb9sk.x1plvlek.xryxfnj.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1cy8zhl.x1oa3qoh.x1nhvcw1');
+                     // Check if any elements were found
+                     if (allDivs.length === 0) {
+                        console.error('Error: No matching div elements found.');
+                     } else {
+                        // Select the last element
+                        const unfollow_btn = allDivs[allDivs.length - 1];
+                        await sleep(1000);
+                        unfollow_btn.click()
+                        await sleep(2000);
+                        console.log('Last matching div element:', lastDiv);
+                     }
+                  }
+                  //nfolowwwing i
+                  //nfolowwwing i
+                  //nfolowwwing i
+               } catch (e) {
+                  // statements
+                  // first ser info extracting
+                  // first ser info extracting
+                  // Hit the update status endpoint
+                  console.log(e);
+               }
+            }
+         }
       }
-      // first ser info extracting
-      // first ser info extracting
-      // Hit the update status endpoint
-      await fetch(`http://localhost:3005/user/username/${unvisitedUser.username}/update-status`, {
-         method: 'PUT',
-         headers: {
-            'Content-Type': 'application/json'
-         },
-         body: JSON.stringify(updateData)
-      });
-      //also add fail/ success count // to orevent api rate limiting
-      console.log({
-         updateData
-      });
-      console.log(`User ${unvisitedUser.username} status updated to ${updateData}`);
-      // Hit the endpoint to set initialization state to true
-      await fetch('http://localhost:3005/init/set-true', {
-         method: 'PUT'
-      });
-      console.log('Initialization state set to true after user update');
-      // await sleep(5000); 
-      // const messageContainer = createNotificationSystem();
-      // showMessages(messageContainer);
-      // Refresh the page to move to the next user
-      window.location.reload(); // Correctly reload the page
+   } catch (e) {
+      // statements
+      console.log(e);
    }
+   await fetch(`http://localhost:3005/user/username/${unvisitedUser.username}/update-status`, {
+      method: 'PUT',
+      headers: {
+         'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updateData)
+   });
+   //also add fail/ success count // to orevent api rate limiting
+   console.log({
+      updateData
+   });
+   console.log(`User ${unvisitedUser.username} status updated to ${updateData}`);
+   // Hit the endpoint to set initialization state to true
+   await fetch('http://localhost:3005/init/set-true', {
+      method: 'PUT'
+   });
+   console.log('Initialization state set to true after user update');
+   // await sleep(5000); 
+   // const messageContainer = createNotificationSystem();
+   // showMessages(messageContainer);
+   // Refresh the page to move to the next user
+   window.location.reload(); // Correctly reload the page
 }
 // Call the main function to execute
-
-function extractUserInfo(domElement) {
-   const userInfo = {
-      username: domElement.querySelector(`a[href^="/${myUsername}/"] span`).innerText.trim(),
-      profilePicture: domElement.querySelector(`a[href^="/${myUsername}/"] img`).src,
-      name: domElement.querySelector('span[dir="auto"]').innerText.trim()
-   };
-   return userInfo;
-}
-
 function extractInstagramUserInfo(container) {
    try {
       // Check if container exists
@@ -333,7 +331,7 @@ function extractInstagramUserInfo(container) {
       const profilePicture = profilePictureElement ? profilePictureElement.src : null;
       return {
          username: username || "N/A",
-         href: username ? `https://www.instagram.com/${username}` :  "N/A",
+         href: username ? `https://www.instagram.com/${username}` : "N/A",
          fullName: fullName || "N/A",
          profilePicture: profilePicture || "N/A"
       };
@@ -426,24 +424,22 @@ async function processUserInfoCallback(users_info) {
    // Instead of storing in memory, process the data here
    // Example: Send to a server or database, or simply log
    for (let user of users_info) {
-
-        try {
-          const response = await fetch('http://localhost:3005/user/add', {
+      try {
+         const response = await fetch('http://localhost:3005/user/add', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+               'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
-          });
-          if (!response.ok) {
+         });
+         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          const data = await response.json();
-          console.log('Success:', data);
-        } catch (error) {
-          console.error('Error:', error);
-        }
-
+         }
+         const data = await response.json();
+         console.log('Success:', data);
+      } catch (error) {
+         console.error('Error:', error);
+      }
       // Replace this with actual processing (e.g., sending to API)
       console.log(`Processing unique user: ${user.username}`);
    }
@@ -468,9 +464,5 @@ function getVisibleElements(targetElements, scrollContainer) {
    });
    return visibleElements;
 }
-
-
-
-
 // getFollowingList()
-main();//to unfollow
+main(); //to unfollow
