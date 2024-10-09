@@ -153,7 +153,6 @@ app.post('/user/add', async (req, res) => {
       follows_back: false,  // Default value
       visited: false        // Default value
     });
-
     // Save the new user to the database
     const savedUser = await newUser.save();
 

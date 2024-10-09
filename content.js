@@ -181,8 +181,8 @@ async function showMessages(messageContainer) {
 function extractUserInfo(domElement) {
    try {
       return {
-         username: domElement.querySelector('a[href^="/an0rn/"] span').innerText.trim(),
-         profilePicture: domElement.querySelector('a[href^="/an0rn/"] img').src,
+         username: domElement.querySelector(`a[href^="/${myUsername}/"] span`).innerText.trim(),
+         profilePicture: domElement.querySelector(`a[href^="/${myUsername}/"] img`).src,
          name: domElement.querySelector('span[dir="auto"]').innerText.trim()
       };
    } catch (e) {
@@ -311,8 +311,8 @@ async function main() {
 
 function extractUserInfo(domElement) {
    const userInfo = {
-      username: domElement.querySelector('a[href^="/an0rn/"] span').innerText.trim(),
-      profilePicture: domElement.querySelector('a[href^="/an0rn/"] img').src,
+      username: domElement.querySelector(`a[href^="/${myUsername}/"] span`).innerText.trim(),
+      profilePicture: domElement.querySelector(`a[href^="/${myUsername}/"] img`).src,
       name: domElement.querySelector('span[dir="auto"]').innerText.trim()
    };
    return userInfo;
